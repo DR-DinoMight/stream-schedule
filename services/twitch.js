@@ -1,6 +1,7 @@
-import { env, cache } from "../deps.js";
+import { env } from "../deps.js";
 import { users } from "../data/users.js";
 import { dayFromDate } from "../utils/date.js";
+import * as Cache from "../utils/cache.js";
 
 let schedule = {};
 
@@ -40,25 +41,30 @@ export const userInformation = async (user) => {
 
   const streamInfoUrl = `https://api.twitch.tv/helix/streams?user_login=${user}`;
 
-  let cachedStreamInformationResponse = cache.get(streamInfoUrl);
-  if (!cache.has(streamInfoUrl)) {
+  let cachedStreamInformationResponse;
+  console.log('has?');
+  if (!(await Cache.has(streamInfoUrl))) {
+    console.log("not got Information")
     const req = new Request( streamInfoUrl , {
-      method: "GET",
+      method: "get",
       headers: headeer
     });
 
     const streamInformationResponse = await fetch(req);
     const streamInformation = await streamInformationResponse.json();
 
-    cache.set(streamInfoUrl, streamInformation);
+    await Cache.set(streamInfoUrl, streamInformation, 5);
     cachedStreamInformationResponse = streamInformation;
+  } else {
+    console.log('has in cache');
+    cachedStreamInformationResponse = (await Cache.get(streamInfoUrl)).object 
   }
 
 
   const userInfoUrl = `https://api.twitch.tv/helix/users?login=${user}`;
-  let cachedUserInformationResponse = cache.get(userInfoUrl);
+  let cachedUserInformationResponse;
   
-  if (!cache.has(userInfoUrl)) {
+  if (!await Cache.has(userInfoUrl)) {
     const userInformationRequest = new Request(userInfoUrl, {
       method: "GET",
      headers: headeer
@@ -66,13 +72,14 @@ export const userInformation = async (user) => {
 
     const userInformationResponse = await fetch(userInformationRequest);
     const userInformation = await userInformationResponse.json();
-    cache.set(userInfoUrl, userInformation);
+    await Cache.set(userInfoUrl, userInformation, 60);
     cachedUserInformationResponse = userInformation;
+  } else {
+    cachedUserInformationResponse = (await Cache.get(userInfoUrl)).object;
   }
 
 
   if (cachedUserInformationResponse) {
-
     return {
       ...cachedUserInformationResponse.data[0],
       'live_info': (Array.isArray(cachedStreamInformationResponse.data) && 
