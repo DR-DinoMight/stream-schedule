@@ -42,9 +42,7 @@ export const userInformation = async (user) => {
   const streamInfoUrl = `https://api.twitch.tv/helix/streams?user_login=${user}`;
 
   let cachedStreamInformationResponse;
-  console.log('has?');
   if (!(await Cache.has(streamInfoUrl))) {
-    console.log("not got Information")
     const req = new Request( streamInfoUrl , {
       method: "get",
       headers: headeer
@@ -56,14 +54,13 @@ export const userInformation = async (user) => {
     await Cache.set(streamInfoUrl, streamInformation, 5);
     cachedStreamInformationResponse = streamInformation;
   } else {
-    console.log('has in cache');
-    cachedStreamInformationResponse = (await Cache.get(streamInfoUrl)).object 
+    cachedStreamInformationResponse = (await Cache.get(streamInfoUrl)).object
   }
 
 
   const userInfoUrl = `https://api.twitch.tv/helix/users?login=${user}`;
   let cachedUserInformationResponse;
-  
+
   if (!await Cache.has(userInfoUrl)) {
     const userInformationRequest = new Request(userInfoUrl, {
       method: "GET",
@@ -82,9 +79,9 @@ export const userInformation = async (user) => {
   if (cachedUserInformationResponse) {
     return {
       ...cachedUserInformationResponse.data[0],
-      'live_info': (Array.isArray(cachedStreamInformationResponse.data) && 
-          !cachedStreamInformationResponse.data.length) ? 
-        cachedStreamInformationResponse.data[0] : 
+      'live_info': (Array.isArray(cachedStreamInformationResponse.data) &&
+          !cachedStreamInformationResponse.data.length) ?
+        cachedStreamInformationResponse.data[0] :
         false
     }
   }
@@ -100,22 +97,33 @@ export const allUsersInformation = async () => {
   let contentHeader = await header();
   const userCsv = users.map(user => user.name);
 
-  const streamInformationResponse  = await fetch(`https://api.twitch.tv/helix/streams?user_login=${userCsv.join('&user_login=')}`, {
-    method: "GET",
-    headers: contentHeader
-  });
-  const streamInformation = await streamInformationResponse.json();
+  const streamInfoUrl = `https://api.twitch.tv/helix/streams?user_login=${userCsv.join('&user_login=')}`;
 
-   const userInformationResponse = await fetch(`https://api.twitch.tv/helix/users?login=${userCsv.join('&login=')}`, {
-    method: "GET",
-    headers: contentHeader
-  });
-  const userInformation = await userInformationResponse.json();
+  let cachedStreamInformationResponse;
+  if (!(await Cache.has(streamInfoUrl))) {
+    const streamInformationResponse  = await fetch(streamInfoUrl, {
+      method: "GET",
+      headers: contentHeader
+    });
+    cachedStreamInformationResponse = await streamInformationResponse.json();
+    await Cache.set(streamInfoUrl, cachedStreamInformationResponse, 5);
+  } else { cachedStreamInformationResponse = await Cache.get(streamInfoUrl);}
 
-  return userInformation.data.map( userInfo => {
+  const userInfoUrl = `https://api.twitch.tv/helix/users?login=${userCsv.join('&login=')}`;
+
+  let cachedUserInformationResponse;
+  if (!(await Cache.has(userInfoUrl))) {
+    const userInformationResponse = await fetch(userInfoUrl, {
+      method: "GET",
+      headers: contentHeader
+    });
+    cachedUserInformationResponse = await userInformationResponse.json();
+  } else { cachedUserInformationResponse = await Cache.get(userInfoUrl);}
+
+  return cachedUserInformationResponse.data.map( userInfo => {
     return {
       ...userInfo,
-      'live_info': liveInfo(streamInformation, userInfo)
+      'live_info': liveInfo(cachedStreamInformationResponse, userInfo)
     }
   });
 
@@ -204,23 +212,25 @@ export const scheduleForUser = async (user) => {
   return true;
 };
 
-
 const liveInfo = (streamInformation, userInfo) => {
-        const stream = streamInformation.data.find( (stream, _index) => stream.user_id == userInfo.id );
+  if(!Array.isArray(streamInformation.data) ||
+      !streamInformation.data.length) return false;
 
-        if (stream) {
-          return {
-            game_id: stream.game_id,
-            game_name: stream.game_name,
-            type: stream.type,
-            title: stream.title,
-            viewer_count: stream.viewer_count,
-            started_at: stream.started_at,
-            thumbnail_url: stream.thumbnail_url,
-            tags: stream.tagstag_ids
-          };
-        }
-        else
-          return false;
+    const stream = streamInformation.data.find( (stream, _index) => stream.user_id == userInfo.id );
+
+    if (stream) {
+      return {
+        game_id: stream.game_id,
+        game_name: stream.game_name,
+        type: stream.type,
+        title: stream.title,
+        viewer_count: stream.viewer_count,
+        started_at: stream.started_at,
+        thumbnail_url: stream.thumbnail_url,
+        tags: stream.tagstag_ids
+      };
+    }
+    else
+      return false;
 }
 

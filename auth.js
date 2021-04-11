@@ -14,4 +14,4 @@ tty.goHomeSync();
 await auth();
 console.log(Colors.green('AUTH TOKEN FETCHED SUCCESSFULLY'));
 console.log(`TOKEN can be found in ${Colors.green('.twitch_key')} file`);
-await printImage({path: "./public/cool-300.png", width: 25})
+await printImage({path: "./public/cool-300.png", width: 25});
