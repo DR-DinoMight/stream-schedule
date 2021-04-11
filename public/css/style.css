@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+
+:root {
+  --color-primary: #ffb626;
+  --color-secondary: #82af3a;
+  --color-tertiary: #f11012;
+  --color-foreground: #0f111a;
+  --color-background-dark: #650000;
+  --color-background: #ffffff;
+  --color-muted: #666666;
+  --grid-unit: 0.5rem;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-family-heading: "Work Sans", sans-serif;
+  --font-family-body: "Work Sans", sans-serif;
+  --font-family-code: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  --global-transition-time: 0.2s;
+  --wrapper-max-width: 48rem;
+  --landing-wrapper-max-width: 72rem;
+}
+
+html {
+  font-size:  100%;
+}
+
+body {
+  font-family: var(--font-family-heading);
+  margin: 0;
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+  font-size: 1rem;
+}
+
+header {
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 50px 30px;
+  text-align: center;
+  color: var(--color-background);
+  text-shadow: 0 0px 4px rgb(0 0 0 / 10%);
+  grid-column: span 2;
+  background: var(--color-tertiary);
+  border-bottom: 0.5rem solid var(--color-primary);
+  margin-bottom: 20px;
+}
+
+.live-container {
+  display: grid;
+}
