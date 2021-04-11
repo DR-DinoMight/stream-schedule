@@ -85,11 +85,7 @@ export const users = [
     },
     {
         name: 'whitep4nth3r',
-        id: '000000000',
-    },
-    {
-        name: 'lukeocodes',
-        id: '000000000',
+        id: '469006291',
     },
     {
         name: 'vimlark',

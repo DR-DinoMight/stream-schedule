@@ -13,6 +13,6 @@
   },
   "watcher": {
     "exts": ["js", "jsx", "ts", "tsx", "json", ".env", "eta", "css"],
-    "skip": ["*/.git/*", "./public/*"]
+    "skip": ["*/.git/*", "./public/*", "./public/scripts/schedules.json"]
   }
 }

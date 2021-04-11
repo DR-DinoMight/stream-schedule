@@ -133,7 +133,7 @@ export const scheduleForAllTeam = async () => {
   Promise.all(users.map((u) => scheduleForUser(u.name))).then(() => {
     Deno.writeTextFile('./public/scripts/schedules.json',  JSON.stringify(schedule),  function(err) {
         if (err) {
-            return console.error(err);
+            throw new err;
         }
         console.log("File created!");
     });

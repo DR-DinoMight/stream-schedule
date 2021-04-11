@@ -8,7 +8,8 @@ import {
   serveStatic,
 } from "./deps.js";
 
-import {auth} from "./services/twitch.js";
+import {schedule} from "./services/schedule.js"
+
 import appRouter from "./routes/app.js";
 import apiRouter from "./routes/api.js";
 
@@ -40,5 +41,6 @@ app.use(function (err, _req, res, _next) {
 console.log("Listenting on http://localhost:3000");
 app.listen(3000);
 
-// auth?? need to imporve
-auth();
+schedule();
+
+
