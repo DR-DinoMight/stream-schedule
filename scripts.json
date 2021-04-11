@@ -1,0 +1,18 @@
+{
+  "$schema": "https://deno.land/x/denon@2.4.7/schema.json",
+  "scripts": {
+    "start": {
+      "cmd": "deno run --unstable --allow-net --allow-read --allow-env --allow-write=./public/scripts/,./.twitch_key index.js",
+      "desc": "Start Server"
+    },
+    "auth": {
+      "cmd": "deno run --unstable --allow-write=./.twitch_key --allow-net --allow-read --allow-env auth.js",
+      "desc": "Get twitch token",
+      "watch": false
+    }
+  },
+  "watcher": {
+    "exts": ["js", "jsx", "ts", "tsx", "json", ".env", "eta", "css"],
+    "skip": ["*/.git/*", "./public/*"]
+  }
+}

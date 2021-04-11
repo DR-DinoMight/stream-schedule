@@ -1,0 +1,9 @@
+<div class="card">
+  <h3><img src="<%= it.user.profile_image_url %>" /><%= it.user.display_name %></h3>
+  <span><%= it.user.live_info.started_at %></span>
+  <span><%= it.user.broadcaster_type %></span>
+  <p><%= it.user.live_info.title %></p>
+  <span>Viewers: <%= it.user.live_info.viewer_count %></span>
+  <img src="<%= it.user.live_info.thumbnail_url.replace("{width}", "300").replace("{height}", "300")%>" />
+
+</div>

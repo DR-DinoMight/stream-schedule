@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= it.title %></title>
+  </head>
+  <body>
+    <h1><%= it.title %></h1>
+    <% it.currentlyLiveUsers.forEach((user) => { %> <%~
+    includeFile('shared/live-card', {user}) %> <%}); %> <%
+    it.sortedDays.forEach((day) => { %>
+    <div class="day-container">
+      <h3 class="day-container__day"><%= day %></h3>
+      <ul class="streamers">
+        <% it.schedules[day].forEach((user) => { %> <%~
+        includeFile('shared/user', { user })%> <% }); %>
+      </ul>
+    </div>
+    <% }); %>
+  </body>
+</html>
