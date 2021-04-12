@@ -8,7 +8,9 @@ import {
   serveStatic,
 } from "./deps.js";
 
-import {schedule} from "./services/schedule.js"
+import {titleCase} from "./utils/string.js";
+
+import {schedule} from "./services/schedule.js";
 
 import appRouter from "./routes/app.js";
 import apiRouter from "./routes/api.js";
@@ -37,6 +39,8 @@ app.use(function (err, _req, res, _next) {
   console.error(err.stack);
   res.setStatus(500).end(`Something Broke!\r\n ${err.stack}`);
 });
+
+app.locals.titleCase = titleCase;
 
 console.log("Listenting on http://localhost:3000");
 app.listen(3000);

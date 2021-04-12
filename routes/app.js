@@ -6,7 +6,7 @@ const router = Router();
 //Get home page.
 router.get("/", async (_req, res, _next) => {
   const data = await streamControllerIndex();
-  res.render("index", data);
+  res.render("index", {...data});
 });
 
 export default router;

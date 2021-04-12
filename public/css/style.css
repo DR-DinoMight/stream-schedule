@@ -21,7 +21,7 @@
 }
 
 html {
-  font-size:  100%;
+  font-size: 100%;
 }
 
 body {
@@ -32,19 +32,102 @@ body {
   font-size: 1rem;
 }
 
-header {
-  font-weight: 900;
-  text-transform: uppercase;
-  padding: 50px 30px;
-  text-align: center;
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: var(--color-background);
   text-shadow: 0 0px 4px rgb(0 0 0 / 10%);
-  grid-column: span 2;
   background: var(--color-tertiary);
   border-bottom: 0.5rem solid var(--color-primary);
   margin-bottom: 20px;
 }
 
+.title__image {
+  width: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.title__text {
+  font-size: 3rem;
+  margin-top: 0;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 80vw;
+}
+
 .live-container {
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 72rem;
+}
+
+.live-container__cards {
   display: grid;
+  grid-gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.live-container .card {
+  max-width: 90%;
+  padding: 2rem;
+  color: var(--color-foreground);
+  background: var(--color-background);
+  border: 0.25rem solid var(--color-tertiary);
+  box-shadow: 0.5rem 0.5rem 0 0 var(--color-background);
+  display: flex;
+
+  flex-direction: column;
+  justify-content: space-around;
+}
+.live-container .card .streamer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.live-container .card .streamer__avatar {
+  width: 20%;
+  height: 20%;
+  margin-right: 1rem;
+}
+.live-container .card .streamer__info {
+  display: block;
+}
+
+.live-container .card .title__text h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.schedule-container .day-container__day {
+  margin-left: 1rem;
+}
+
+.schedule-container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.schedule-container li {
+  margin: 2rem;
+}
+.schedule-container .streamer--link {
+  display: flex;
+}
+
+.schedule-container .streamer--left {
+  width: 10rem;
+  margin-right: 2rem;
+}
+
+.schedule-container .streamer .streamer--avatar {
+  max-width: 100%;
 }

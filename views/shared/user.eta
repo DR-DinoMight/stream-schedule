@@ -6,12 +6,18 @@
         alt="Profile photo of <%= it.user.who %>"
         class="streamer--avatar"
       />
-      <span class="streamer--name"><%= it.user.who %></span>
-      <span class="streamer--title"><%= it.user.title %></span>
     </div>
-    <div class="streamer--right streamer--time">
-      <span class="streamer--start-time"><%= it.user.start %></span>
-      <span class="streamer--end-time">/ <%= it.user.end %></span>
+    <div class="streamer--right">
+      <div class="streamer--top">
+        <span class="streamer--name"><%= it.user.who %></span>
+        <time>
+          <span><%= it.user.start %></span>
+          <% if (it.user.end) { %>
+            / <%= it.user.end %>
+          <% }; %>
+        </time>
+      </div>
+      <span class="streamer--title"><%= it.user.title %></span>
     </div>
   </a>
 </li>
