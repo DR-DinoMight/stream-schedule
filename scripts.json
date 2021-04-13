@@ -9,6 +9,11 @@
       "cmd": "deno run --unstable --allow-write=./.twitch_key --allow-net --allow-read --allow-env auth.js",
       "desc": "Get twitch token",
       "watch": false
+    },
+    "schedules": {
+      "cmd": "deno run --unstable --allow-write=./public/scripts/schedules.json --allow-net --allow-read --allow-env schedule.js",
+      "desc": "Fetch and generate twitch schedule",
+      "watch": false
     }
   },
   "watcher": {
