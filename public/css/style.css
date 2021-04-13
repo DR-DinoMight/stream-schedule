@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+@import url("chttps://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
 
 :root {
   --color-primary: #ffb626;
@@ -57,7 +57,7 @@ body {
   margin-top: 0;
   font-weight: 400;
   margin-bottom: 2rem;
-  text-align: center;
+  text-align: enter;
   max-width: 80vw;
 }
 
@@ -117,17 +117,41 @@ body {
 }
 
 .schedule-container li {
-  margin: 2rem;
+  margin: 1rem;
+  background: var(--color-primary);
+  padding: 1rem;
+  border: 0.25rem solid var(--color-tertiary);
 }
 .schedule-container .streamer--link {
   display: flex;
+  text-decoration: none;
+  color: var(--color-foreground);
+}
+.streamer--link:hover,
+.streamer--link:visited {
+  text-decoration: none;
 }
 
 .schedule-container .streamer--left {
-  width: 10rem;
   margin-right: 2rem;
+  flex: 0 0 25%;
 }
 
 .schedule-container .streamer .streamer--avatar {
   max-width: 100%;
+}
+
+.streamer--top {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.streamer--top div {
+  text-align: right;
+}
+
+.schedule-container .streamer--name {
+  font-size: 1.75rem;
+  color: var(--color-foreground);
+  text-decoration: none;
 }

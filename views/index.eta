@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= it.title %></title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"
+      integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ=="
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
@@ -35,5 +40,10 @@
         <% }); %>
       </div>
     </main>
+    <script
+      src="scripts/app.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
   </body>
 </html>

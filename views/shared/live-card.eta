@@ -3,7 +3,7 @@
     <img src="<%= it.user.profile_image_url %>" class="streamer__avatar"/>
     <div class="streamer__info">
       <h3><%= it.user.display_name %></h3>
-      <time>Started at: <%= it.user.live_info.started_at.toLocaleString() %></time>
+      <div>Started at: <time datetime="<%= it.user.live_info.started_at.toLocaleString() %>"><%= it.user.live_info.started_at.toLocaleString() %></time></div>
     </div>
   </div>
   <span><%= it.user.broadcaster_type %></span>
