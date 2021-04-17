@@ -1,7 +1,7 @@
 import {cache} from '../deps.js';
 
 export const get = async (key) => {
-  return await cache.get(key); 
+  return await cache.get(key);
 }
 
 export const set = async (key, object, ttl = 5) => {
@@ -20,6 +20,7 @@ export const has = async (key) => {
     const object = await get(key);
     if (object.expiresAt <= (new Date())) {
       await cache.remove(key);
+      await cache.get(key);
       return false;
     }
     return true;

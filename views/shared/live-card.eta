@@ -1,13 +1,19 @@
 <li class="card">
-  <div class="streamer">
+  <div class="banner" style="background-image: url('<%= it.user.live_info.thumbnail_url.replace("{width}", "1200").replace("{height}", "566")%>')">
     <img src="<%= it.user.profile_image_url %>" class="streamer__avatar"/>
+  </div>
+  <div class="streamer">
     <div class="streamer__info">
       <h3><%= it.user.display_name %></h3>
-      <div>Started at: <time datetime="<%= it.user.live_info.started_at.toLocaleString() %>"><%= it.user.live_info.started_at.toLocaleString() %></time></div>
+      <h4><%= it.user.live_info.title %></h4>
+      <p><strong>Started at:</strong> <time datetime="<%= it.user.live_info.started_at.toLocaleString() %>"><%= it.user.live_info.started_at.toLocaleString() %></time></p>
+      <p><strong>Viewers:</strong> <%= it.user.live_info.viewer_count %></p>
     </div>
+    <a href="https://www.twitch.tv/<%= it.user.display_name %>"
+  aria-label="Watch live <%= it.user.display_name %> on twitch"
+    class="streamer__watch"
+      rel="nofollow noreferrer"
+      target="_blank">Watch live<!-- --> →
+    </a>
   </div>
-  <span><%= it.user.broadcaster_type %></span>
-  <p><%= it.user.live_info.title %></p>
-  <span>Viewers: <%= it.user.live_info.viewer_count %></span>
-  <img src="<%= it.user.live_info.thumbnail_url.replace("{width}", "300").replace("{height}", "300")%>" width="90%"/>
 </li>
