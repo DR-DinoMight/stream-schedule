@@ -66,6 +66,21 @@ body {
   max-width: 80vw;
 }
 
+.start-time {
+  max-width: max-content;
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+  text-transform: uppercase;
+  border: 0.25rem solid var(--color-background);
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-main);
+  font-size: 0.875rem;
+  text-decoration: none;
+  margin: 0.5rem;
+}
+
 .live-container {
   margin: 0 auto 2rem auto;
   padding: 1rem;
@@ -104,25 +119,27 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 30cw;
+  height: 18ch;
   display: flex;
   align-items: flex-end;
-  justify-content: start;
+  justify-content: center;
   box-sizing: border-box;
   padding: 2rem;
   transition: height 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
+
 .live-container .card:hover .banner {
-  height: 40cw;
+  height: 22ch;
 }
 
 .live-container .banner .streamer__avatar {
-  width: 8rem;
-  height: 8rem;
+  width: 6rem;
+  height: 6rem;
   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 30%);
   transform: translateY(50%);
   border-radius: 50%;
-  transition: transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  border: 0.25rem solid var(--color-tertiary);
+  transition: all 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
 .live-container .card:hover .banner .streamer__avatar {
@@ -167,6 +184,12 @@ body {
 }
 .live-container .card .streamer__info p {
   margin: 0 0 0.75rem 0;
+}
+
+.live-container .card .streamer__info .start-time {
+  display: flex;
+  align-items: center;
+  border-color: var(--color-secondary);
 }
 
 .live-container .streamer__watch {
@@ -227,41 +250,23 @@ body {
 .schedule-container .streamer--left {
   width: 100px;
   height: 100px;
+  margin: auto;
 }
 
 .schedule-container .streamer--right {
   flex-grow: 1;
-  padding: 0.5rem 1rem 0 1rem;
+  padding: 0.5rem;
 }
 
 .schedule-container .streamer .streamer--avatar {
-  height: 100px;
-  width: 100px;
   overflow: hidden;
-}
-
-.streamer--top {
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-.streamer--top div {
-  align-self: flex-end;
-  background-color: var(--color-foreground);
-  color: var(--color-background);
-  text-transform: uppercase;
-  font-size: 1rem;
-  border: 0.25rem solid var(--color-background);
-  border-radius: 1rem;
-  padding: 0.25rem 0.5rem;
-  font-weight: var(--font-weight-normal);
-  font-family: var(--font-family-main);
-  font-size: 0.875rem;
-  text-decoration: none;
+  padding: 0.5rem;
+  max-width: 100px;
 }
 
 .schedule-container .streamer--name {
-  font-size: 1.75rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
   color: var(--color-foreground);
   text-decoration: none;
   font-weight: var(--font-weight-bold);

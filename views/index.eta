@@ -13,17 +13,17 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
+    <header class="title">
+      <img
+        src="/cool-300.png"
+        class="title__image"
+        alt="a white panther with glasses logo"
+      />
+      <h1 class="title__text">The Claw's Twitch Schedule</h1>
+    </header>
     <main>
-      <header class="title">
-        <img
-          src="/cool-300.png"
-          class="title__image"
-          alt="a white panther with glasses logo"
-        />
-        <h1 class="title__text">The Claw's Twitch Schedule</h1>
-      </header>
       <div class="live-container">
-        <ul class="live-container__cards">
+        <ul class="live-container__cards" aria-label="The Claw members whose live">
           <% it.currentlyLiveUsers.forEach((user) => { %> <%~
           includeFile('shared/live-card', {user}) %> <%}); %>
         </ul>
@@ -32,8 +32,8 @@
         <% it.sortedDays.forEach((day) => { %>
         <div class="day-container">
           <h3 class="day-container__day"><%= it.titleCase(day) %></h3>
-          <ul class="streamers">
-            <% it.schedules[day].forEach((user) => { %> <%~
+            <ul class="streamers" aria-label="The Claw stream schedule for <%= it.titleCase(day) %>">
+            <% it.sortByDate(it.schedules[day], 'start').forEach((user) => { %> <%~
             includeFile('shared/user', { user })%> <% }); %>
           </ul>
         </div>

@@ -8,15 +8,13 @@
       />
     </div>
     <div class="streamer--right">
-      <div class="streamer--top">
         <span class="streamer--name"><%= it.user.who %></span>
-        <div>
+        <div class="start-time">
           <time datetime="<%= it.user.start %>"><%= it.user.start %></time>
-          <% if (it.user.end) { %>
-            / <time datetime="<%= it.user.end %>"><%= it.user.end %></time>
+          <% if (it.user.end) { %> /
+          <time datetime="<%= it.user.end %>"><%= it.user.end %></time>
           <% }; %>
         </div>
-      </div>
       <span class="streamer--title"><%= it.user.title %></span>
     </div>
   </a>

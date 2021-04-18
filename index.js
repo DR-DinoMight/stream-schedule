@@ -9,7 +9,7 @@ import {
 } from "./deps.js";
 
 import {titleCase} from "./utils/string.js";
-
+import {sortByDate} from "./utils/array.js";
 import {schedule} from "./services/schedule.js";
 
 import appRouter from "./routes/app.js";
@@ -41,6 +41,7 @@ app.use(function (err, _req, res, _next) {
 });
 
 app.locals.titleCase = titleCase;
+app.locals.sortByDate = sortByDate;
 
 console.log("Listenting on http://localhost:3000");
 app.listen(3000);

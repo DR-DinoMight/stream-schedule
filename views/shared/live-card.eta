@@ -6,14 +6,12 @@
     <div class="streamer__info">
       <h3><%= it.user.display_name %></h3>
       <h4><%= it.user.live_info.title %></h4>
-      <p><strong>Started at:</strong> <time datetime="<%= it.user.live_info.started_at.toLocaleString() %>"><%= it.user.live_info.started_at.toLocaleString() %></time></p>
-      <p><strong>Viewers:</strong> <%= it.user.live_info.viewer_count %></p>
     </div>
     <a href="https://www.twitch.tv/<%= it.user.display_name %>"
   aria-label="Watch live <%= it.user.display_name %> on twitch"
     class="streamer__watch"
       rel="nofollow noreferrer"
-      target="_blank">Watch live<!-- --> →
+      target="_blank">🔴<!-- --> Watch live
     </a>
   </div>
 </li>
