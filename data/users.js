@@ -87,18 +87,4 @@ export const users = [
         name: 'whitep4nth3r',
         id: '469006291',
     },
-    {
-        name: 'thealtf4stream',
-        id: '000000000',
-    },
-  {
-      name: 'professionalgradebeginner',
-    id: '00000',
-  },
-  {
-      name: 'PrismaticaDev',
-    id: '00000',
-  }
-
-
 ];

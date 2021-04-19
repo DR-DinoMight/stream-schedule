@@ -2,6 +2,7 @@ import { env } from "../deps.js";
 import { users } from "../data/users.js";
 import { dayFromDate } from "../utils/date.js";
 import * as Cache from "../utils/cache.js";
+import {existsSync } from "https://deno.land/std/fs/mod.ts";
 
 let schedule = {};
 
@@ -139,6 +140,11 @@ export const allLiveUsersInformation = async () => {
 
 export const scheduleForAllTeam = async () => {
   Promise.all(users.map((u) => scheduleForUser(u.name))).then(() => {
+
+    if (existsSync('./public/scripts/schedules.json')){
+      Deno.remove('./public/scripts/schedules.json');
+    }
+
     Deno.writeTextFile('./public/scripts/schedules.json',  JSON.stringify(schedule),  function(err) {
         if (err) {
             throw new err;

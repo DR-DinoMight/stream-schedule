@@ -11,7 +11,7 @@
       "watch": false
     },
     "schedules": {
-      "cmd": "deno run --unstable --allow-write=./public/scripts/schedules.json --allow-net --allow-read --allow-env schedule.js",
+      "cmd": "deno run --unstable --allow-write=./public/scripts/, --allow-net --allow-read --allow-env schedule.js",
       "desc": "Fetch and generate twitch schedule",
       "watch": false
     }

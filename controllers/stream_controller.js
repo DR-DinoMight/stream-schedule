@@ -10,6 +10,6 @@ export const index = async () => {
     currentlyLiveUsers,
     sortedDays,
     schedules,
-    title: "Ow'do Twitch 👋",
+    title: "Stream Schedule",
   }
 }
