@@ -7,7 +7,7 @@ export {
   urlencoded,
   serveStatic,
   Router,
-} from "https://deno.land/x/opine@1.2.0/mod.ts";
+} from "https://deno.land/x/opine@1.3.0/mod.ts";
 export * as eta from "https://deno.land/x/eta@v1.11.0/mod.ts";
 
 import { config  } from "https://deno.land/x/dotenv/mod.ts";
