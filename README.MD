@@ -2,7 +2,6 @@
 # Installation
 
 - Download Deno from - https://deno.land/#installation
-  - Make sure you install `v1.8.3` for now, until a bug with `opine` is fixed, `deno upgrade --version 1.8.3`
 - Download and install the latest version Denon globally (https://deno.land/x/denon) by
 ```
 deno install -qAf --unstable https://deno.land/x/denon/denon.ts
