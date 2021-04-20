@@ -139,9 +139,11 @@ export const allLiveUsersInformation = async () => {
 }
 
 export const scheduleForAllTeam = async () => {
+  schedule = {};
   Promise.all(users.map((u) => scheduleForUser(u.name))).then(() => {
 
     if (existsSync('./public/scripts/schedules.json')){
+      console.log('Old Schedule Removed');
       Deno.remove('./public/scripts/schedules.json');
     }
 
